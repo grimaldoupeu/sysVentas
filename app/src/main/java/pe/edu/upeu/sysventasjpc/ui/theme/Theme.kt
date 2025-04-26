@@ -223,11 +223,16 @@ public val DarkGreenColors = darkColorScheme(
 )
 enum class ThemeType{RED, PURPLE, GREEN}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e7f4703 (crud)
 @Composable
 fun SysVentasJPCTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
+<<<<<<< HEAD
     colorScheme:ColorScheme,
     content: @Composable () -> Unit
 ) {
@@ -240,6 +245,12 @@ fun SysVentasJPCTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }*/
+=======
+    colorScheme: ColorScheme,
+    content: @Composable () -> Unit
+) {
+
+>>>>>>> e7f4703 (crud)
 
     MaterialTheme(
         colorScheme = colorScheme,

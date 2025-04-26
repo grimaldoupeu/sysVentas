@@ -78,8 +78,16 @@ fun LoginScreen(
                     scope.launch {
                         delay(3600)
                         if(isLogin && loginResul!=null){
+<<<<<<< HEAD
                             navigateToHome.invoke()
                         }else{
+=======
+                            Log.i("TOKENV", TokenUtils.TOKEN_CONTENT)
+                            Log.i("DATA", loginResul!!.user)
+                            navigateToHome.invoke()
+                        }else{
+                            Log.v("ERRORX", "Error logeo")
+>>>>>>> e7f4703 (crud)
                             Toast.makeText(context,"Error al conectar",Toast.LENGTH_LONG)
                         }
                     }

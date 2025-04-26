@@ -15,6 +15,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
+<<<<<<< HEAD
+=======
+import androidx.compose.material.icons.filled.ArrowDropDown
+>>>>>>> e7f4703 (crud)
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
@@ -27,6 +31,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
+=======
+import androidx.compose.runtime.LaunchedEffect
+>>>>>>> e7f4703 (crud)
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -55,10 +63,17 @@ import java.util.Calendar
 import java.util.Date
 
 enum class MyFormKeys {
+<<<<<<< HEAD
     EMAIL, PASSWORD, SALUTATION, SALUTATION2,NAME, URL, CUSTOM_FOCUS,
     PHONE, CARD, CHECKBOX, LIST_CHECKBOX, TRI_CHECKBOX, RADIO_BUTTON,
     SWITCH, SLIDER, RANGE_SLIDER,DNI, APE_PAT, APE_MAT, FECHA, TIME, TIME_TOLER, MATERIALES, VALIDINSCRIP, ASISSUBACT, ENTSAL, OFFLINE,
     CUI,TIPOCUI,MATERENTRE,HORAREG,MODFH,ACTIVIDADID
+=======
+    EMAIL, PASSWORD, SALUTATION, SALUTATION2,SALUTATION3,NAME, URL, CUSTOM_FOCUS,
+    PHONE, CARD, CHECKBOX, LIST_CHECKBOX, TRI_CHECKBOX, RADIO_BUTTON,
+    SWITCH, SLIDER, RANGE_SLIDER,DNI, APE_PAT, APE_MAT, FECHA, TIME, TIME_TOLER, MATERIALES, VALIDINSCRIP, ASISSUBACT, ENTSAL, OFFLINE,
+    CUI,TIPOCUI,MATERENTRE,HORAREG,MODFH,ACTIVIDADID, PU,PU_OLD, UTILIDAD, STOCK, STOCK_OLD
+>>>>>>> e7f4703 (crud)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,11 +91,23 @@ fun ComboBox(
     )
     val text = state.state
     val isOpen = state.isOpen
+<<<<<<< HEAD
     if (textv != "") {
         val seleccionado = list.find { it.code == textv }
         text.value = seleccionado!!.name
     }
     Log.i("DATAXXX",text.value )
+=======
+
+    // Solo se ejecuta una vez si textv tiene valor inicial
+    LaunchedEffect(textv, list) {
+        if (textv.isNotEmpty()) {
+            list.find { it.code.trim() == textv.trim() }?.let {
+                text.value = it.code+"-"+it.name
+            }
+        }
+    }
+>>>>>>> e7f4703 (crud)
     Box{
         Column {
             TextField(
@@ -89,6 +116,16 @@ fun ComboBox(
                 label = { Text(text = label) },
                 placeholder = { Text(text = label) },
                 modifier = Modifier.fillMaxWidth(),
+<<<<<<< HEAD
+=======
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Dropdown",
+                        modifier = Modifier.clickable { state.onClick() }
+                    )
+                }
+>>>>>>> e7f4703 (crud)
             )
             Spacer(size=2)
             DropDownList(
@@ -147,10 +184,24 @@ fun ComboBoxTwo(
     )
     val text = state.state
     val isOpen = state.isOpen
+<<<<<<< HEAD
     if (textv != "") {
         val seleccionado = list.find { it.code == textv }
         text.value = seleccionado!!.name
     }
+=======
+    LaunchedEffect(textv, list) {
+        if (textv.isNotEmpty()) {
+            list.find { it.code.trim() == textv.trim() }?.let {
+                text.value = it.code+"-"+it.name
+            }
+        }
+    }
+    /*if (textv != "") {
+        val seleccionado = list.find { it.code == textv }
+        text.value = seleccionado!!.name
+    }*/
+>>>>>>> e7f4703 (crud)
     Box{
         Column {
             TextField(
@@ -159,6 +210,74 @@ fun ComboBoxTwo(
                 label = { Text(text = label) },
                 placeholder = { Text(text = label) },
                 modifier = Modifier.fillMaxWidth(),
+<<<<<<< HEAD
+=======
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Dropdown",
+                        modifier = Modifier.clickable { state.onClick() }
+                    )
+                }
+            )
+            Spacer(size=2)
+            DropDownList(
+                state = state,
+                requestToOpen = isOpen.value,
+                list = list,
+            )
+        }
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .alpha(0f)
+                .clickable(onClick = state.onClick)
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ComboBoxThre(
+    easyForm: EasyForms,
+    label:String,
+    textv: String,
+    list:List<ComboModel>
+) {
+    val state = easyForm.addAndGetCustomState(
+        MyFormKeys.SALUTATION3, MyEasyFormsCustomStringState(
+            validData = list
+        )
+    )
+    val text = state.state
+    val isOpen = state.isOpen
+    LaunchedEffect(textv, list) {
+        if (textv.isNotEmpty()) {
+            list.find { it.code.trim() == textv.trim() }?.let {
+                text.value = it.code+"-"+it.name
+            }
+        }
+    }
+    /*if (textv != "") {
+        val seleccionado = list.find { it.code == textv }
+        text.value = seleccionado!!.name
+    }*/
+    Box{
+        Column {
+            TextField(
+                value = text.value,
+                onValueChange = state.onValueChangedCallback,
+                label = { Text(text = label) },
+                placeholder = { Text(text = label) },
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Dropdown",
+                        modifier = Modifier.clickable { state.onClick() }
+                    )
+                }
+>>>>>>> e7f4703 (crud)
             )
             Spacer(size=2)
             DropDownList(
@@ -193,10 +312,24 @@ fun DropdownMenuCustom(
     )
     val text = state.state
     val isOpen = state.isOpen
+<<<<<<< HEAD
     if (textv != "") {
         val seleccionado = list.find { it.code == textv }
         text.value = seleccionado!!.name
     }
+=======
+    LaunchedEffect(textv, list) {
+        if (textv.isNotEmpty()) {
+            list.find { it.code.trim() == textv.trim() }?.let {
+                text.value = it.name
+            }
+        }
+    }
+    /*if (textv != "") {
+        val seleccionado = list.find { it.code == textv }
+        text.value = seleccionado!!.name
+    }*/
+>>>>>>> e7f4703 (crud)
 
     var expanded by remember { mutableStateOf(false) }
     val selectedCategory = remember { mutableStateOf(list.first()) }

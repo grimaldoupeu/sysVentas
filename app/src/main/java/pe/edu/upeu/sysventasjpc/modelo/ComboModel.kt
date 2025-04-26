@@ -6,7 +6,13 @@ data class ComboModel(val code:String, val name:String):
         return this.name.startsWith(query)
     }
 }
+<<<<<<< HEAD
 
 abstract class PickerValue{
     abstract fun searchFilter(query:String):Boolean
 }
+=======
+abstract class PickerValue{
+    abstract fun searchFilter(query:String):Boolean
+}
+>>>>>>> e7f4703 (crud)

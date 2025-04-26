@@ -4,3 +4,7 @@ data class Categoria (
     val idCategoria: Long,
     val nombre: String
 )
+<<<<<<< HEAD
+=======
+
+>>>>>>> e7f4703 (crud)

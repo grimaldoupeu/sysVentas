@@ -7,6 +7,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 interface UsuarioRepository {
+<<<<<<< HEAD
     suspend fun loginUsuario(user:UsuarioDto): Response<UsuarioResp>
 }
 
@@ -15,3 +16,15 @@ class UsuarioRepositoryImp @Inject constructor(private val restUsuario: RestUsua
         return restUsuario.login(user)
     }
 }
+=======
+    suspend fun loginUsuario(user: UsuarioDto):
+            Response<UsuarioResp>
+}
+class UsuarioRepositoryImp @Inject constructor(private val
+                                               restUsuario: RestUsuario):UsuarioRepository{
+    override suspend fun loginUsuario(user:UsuarioDto):
+            Response<UsuarioResp>{
+        return restUsuario.login(user)
+    }
+}
+>>>>>>> e7f4703 (crud)
